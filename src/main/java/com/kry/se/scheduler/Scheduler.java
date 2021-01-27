@@ -20,7 +20,6 @@ public class Scheduler {
    
     @Autowired
     PollerService pollerService;
-	//should we use repo here or from service class
 	@Autowired
 	PollerRepository pollerRepository;
 
@@ -29,7 +28,7 @@ public class Scheduler {
 	   
 	   List<PollerData> pollerData = (List<PollerData>) pollerService.findAllServices();
    	for(PollerData poller:pollerData) {
-   		//periodically does a HTTP GET ?
+
    		poller.setStatus(pollerService.testService(poller.getUrl()));
    		poller.setDateUpdated(LocalDateTime.now());
    		logger.info("Updating status for URL: "+poller.getUrl()+" at: "+poller.getDateUpdated());
