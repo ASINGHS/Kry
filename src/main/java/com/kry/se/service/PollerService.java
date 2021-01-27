@@ -13,9 +13,6 @@ import org.springframework.web.client.RestTemplate;
 import com.kry.se.entity.PollerData;
 import com.kry.se.repository.PollerRepository;
 
-
-
-
 @Service
 public class PollerService {
 	
@@ -32,7 +29,6 @@ public class PollerService {
 		try {
 			//Need to figure Out how to use poller
 			pollerData.setDateCreated(LocalDateTime.now());
-			PollerData poller = pollerRepository.save(pollerData);
 			logger.info("created service:" + pollerData.getName());
 		} catch (Exception e) {
 			logger.error("Failed to create service " + pollerData.getName(), e);
@@ -44,16 +40,11 @@ public class PollerService {
 	public void updateService(PollerData pollerData) {
 		logger.info("updating service:" + pollerData.getName());
 		try {
-			int result = pollerRepository.updatePollerData(pollerData.getName(), pollerData.getUrl(), pollerData.getPollerId());
-//			if(result!=0) {	
-//				logger.info("updated service:" + pollerData.getName());
-//			}else {	
-//			logger.info("record not updated" + pollerData.getName());
-//			}
+			pollerRepository.updatePollerData(pollerData.getName(), pollerData.getUrl(), pollerData.getPollerId());
+
 			} catch (Exception e) {
 			logger.error("Failed to update service " + pollerData.getName(), e);
 			}
-//		return pollerData.getName()+" Service Updated";
 	}
 
 	public List<PollerData> findAllServices() {
@@ -90,8 +81,5 @@ public class PollerService {
 		return pollerData.get();
 	}
 	
-//	public PollerData convertPoller (Optional<PollerData> optionalData){
-//		PollerData pollerData = optionalData.get();
-//		return pollerData;
-//	}
+
 }

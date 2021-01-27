@@ -1,8 +1,6 @@
 package com.kry.se.scheduler;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Component;
 import com.kry.se.entity.PollerData;
 import com.kry.se.repository.PollerRepository;
 import com.kry.se.service.PollerService;
-import com.mysql.cj.log.LogFactory;
 
 @Component
 public class Scheduler {
